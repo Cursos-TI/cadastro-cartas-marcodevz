@@ -1,17 +1,25 @@
 #include <stdio.h>
 
+// Programa para cadastrar e exibir dados de duas cartas de cidades.
+// Cada carta contém: estado, código, nome da cidade, população,
+// área, PIB e número de pontos turísticos. O objetivo é treinar
+// entrada de dados e exibição formatada usando printf/scanf.
 
 int main() {
     // VARIÁVEIS CARTA 1
-    char Estado[50];
-    char Codigo[4];
-    char Nome[30];
-    int Populacao;
-    float Area;
-    double PIB;
-    int Numero;
+
+    char Estado[50]; // Armazena o nome do estado da primeira carta
+    char Codigo[4]; // Código identificador da carta (ex: A01)
+    char Nome[30]; // Nome da cidade
+    int Populacao; // População total da cidade
+    float Area; // Área da cidade em km²
+    double PIB; // Produto interno bruto (em bilhões de reais)
+    int Numero; // Número de pontos turísticos da cidade
 
     // LEITURA CARTA 1
+    // Cada printf solicita um dado e cada scanf armazena na variável
+    // correspondente.
+
     printf("Digite seu estado: \n");
     scanf(" %s",Estado);
     
@@ -35,6 +43,8 @@ int main() {
     scanf("%i", &Numero);
 
     // IMPRIME CARTA 1
+    // São exibidos todos os valores fornecidos pelo usuário,
+    // com formatação (como duas casas decimais).
 
     printf("Estado: %s\n", Estado);
     printf("Código da carta: %s\n",Codigo);
@@ -43,6 +53,9 @@ int main() {
     printf("Número de pontos turísticos: %i\n\n", Numero);
 
     // VARIÁVEIS CARTA 2
+    // São as mesmas da carta 1, porém separadas para armazenar
+    // dados independentes.
+
     char Estado2[20];
     char Codigo2[10];
     char Nome2[20];
@@ -52,6 +65,8 @@ int main() {
     int Numero2;
 
     // LEITURA CARTA 2
+    // Processo idêntico ao anterior, porém armazenado em novas variáveis.
+
     printf("Digite seu estado: \n");
     scanf(" %s",Estado2);
     
@@ -75,6 +90,7 @@ int main() {
     scanf("%i", &Numero2);
 
     // IMPRIME CARTA 2
+    // Exibe todos os valores coletados da segunda carta
 
     printf("Estado: %s\n", Estado2);
     printf("Código da carta: %s\n",Codigo2);
@@ -82,6 +98,6 @@ int main() {
     printf("Área: %.2fkm²\nPIB: %.2lf Bilhões de reais\n", Area2, PIB2);
     printf("Número de pontos turísticos: %i\n", Numero2);
 
-    return 0;
+    return 0; // Indica que o programa finalizou sem erros
 
     } 
