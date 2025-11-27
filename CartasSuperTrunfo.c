@@ -15,6 +15,9 @@ int main() {
     float Area; // Área da cidade em km²
     double PIB; // Produto interno bruto (em bilhões de reais)
     int Numero; // Número de pontos turísticos da cidade
+    float Densidade; // Calcula a Densidade Populacional
+    float PIBPERCAPITA; // Calcula o PIB per capita da cidade.
+
 
     // LEITURA CARTA 1
     // Cada printf solicita um dado e cada scanf armazena na variável
@@ -50,8 +53,12 @@ int main() {
     printf("Código da carta: %s\n",Codigo);
     printf("Nome da cidade: %s\nPopulação: %i\n", Nome, Populacao);
     printf("Área: %.2fkm²\nPIB: %.2lf Bilhões de reais\n", Area, PIB);
-    printf("Número de pontos turísticos: %i\n\n", Numero);
-
+    printf("Número de pontos turísticos: %i\n", Numero);
+    Densidade = (float)(Populacao/Area);
+    printf("Densidade Populacional: %.2f Hab/km²\n",Densidade);
+    PIBPERCAPITA = (float) (PIB/Populacao);
+    printf("PIB per Capita: %.2f reais\n\n", PIBPERCAPITA);
+    
     // VARIÁVEIS CARTA 2
     // São as mesmas da carta 1, porém separadas para armazenar
     // dados independentes.
@@ -63,6 +70,8 @@ int main() {
     float Area2;
     double PIB2;
     int Numero2;
+    float Densidade2; // Calcula a Densidade Populacional
+    float PIBPERCAPITA2; // Calcula o PIB per capita da cidade.
 
     // LEITURA CARTA 2
     // Processo idêntico ao anterior, porém armazenado em novas variáveis.
@@ -95,8 +104,12 @@ int main() {
     printf("Estado: %s\n", Estado2);
     printf("Código da carta: %s\n",Codigo2);
     printf("Nome da cidade: %s\nPopulação: %i\n", Nome2, Populacao2);
-    printf("Área: %.2fkm²\nPIB: %.2lf Bilhões de reais\n", Area2, PIB2);
+    printf("Área: %.2fkm²\nPIB: %.2lf bilhões de reais\n", Area2, PIB2);
     printf("Número de pontos turísticos: %i\n", Numero2);
+    Densidade2 = (float)(Populacao/Area);
+    printf("Densidade Populacional: %.2f Hab/km²\n",Densidade2);
+    PIBPERCAPITA2 = (float) (PIB/Populacao);
+    printf("PIB per Capita: %.2f reais\n\n", PIBPERCAPITA2);
 
     return 0; // Indica que o programa finalizou sem erros
 
