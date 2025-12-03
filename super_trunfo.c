@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 // Programa para cadastrar e exibir dados de duas cartas de cidades.
 // Cada carta contém: estado, código, nome da cidade, população,
@@ -18,6 +20,7 @@ int main() {
    float Densidade; // Calcula a Densidade Populacional
    float PIBPERCAPITA; // Calcula o PIB per capita da cidade.
    float SuperPoder; // soma todos os atributos númericos.
+   int escolhajogador1;
 
 
    // LEITURA CARTA 1
@@ -78,6 +81,7 @@ int main() {
    float Densidade2; // Calcula a Densidade Populacional
    float PIBPERCAPITA2; // Calcula o PIB per capita da cidade.
    float SuperPoder2; // soma todos os atributos númericos.
+   int escolhajogador2;
 
    // LEITURA CARTA 2
    // Processo idêntico ao anterior, porém armazenado em novas variáveis.
@@ -121,57 +125,127 @@ int main() {
    SuperPoder2 = Populacao2 + Area2 + PIB2 + Numero2 + PIBPERCAPITA2 + (1.0f / Densidade2);
    printf("Super Poder: %.2f\n\n", SuperPoder2);
 
-   printf("\nComparação de Cartas:\n");
+   // ----------------------------------------------------------------
+   //             🏆 NOVO MENU E LÓGICA DE COMPARAÇÃO 🏆
+   // ----------------------------------------------------------------
+   
+    char *nome_atributo = ""; // Armazena o nome do atributo para exibição
 
-   // 1. População (Maior vence)
-   int vencePopulacao = (Populacao > Populacao2);
-   printf("População: Carta %i venceu (%i)\n", 2 - vencePopulacao, vencePopulacao);
+    printf("\n============================================\n");
+    printf("        🏆 SUPER TRUNFO - COMPARACAO 🏆      \n");
+    printf("============================================\n");
+    printf("Escolha o atributo para a comparacao:\n");
+    printf("1 - Populacao\n");
+    printf("2 - Area\n");
+    printf("3 - PIB\n");
+    printf("4 - Numero de pontos turisticos\n");
+    printf("5 - Densidade Demografica (ATENCAO: MENOR vence)\n");
+    printf("--------------------------------------------\n");
+    printf("Digite sua escolha (1-5): ");
+    scanf("%d", &escolhajogador1);
+    
+    printf("\n");
 
-   // 2. Área (Maior vence)
-   int venceArea = (Area > Area2);
-   printf("Área: Carta %i venceu (%i)\n", 2 - venceArea, venceArea);
+    // ESTRUTURA SWITCH: Direciona a lógica de comparação
+    switch (escolhajogador1) {
+        case 1: // População (Maior vence)
+            nome_atributo = "População";
+            printf("Atributo escolhido: **%s**\n", nome_atributo);
+            printf("Carta 1 (%s): %lu\n", Cidade, Populacao);
+            printf("Carta 2 (%s): %lu\n", Cidade2, Populacao2);
+            printf("Regra: MAIOR População vence.\n");
 
-   // 3. PIB (Maior vence)
-   int vencePIB = (PIB > PIB2);
-   printf("PIB: Carta %i venceu (%i)\n", 2 - vencePIB, vencePIB);
+            // Lógica de Comparação IF-ELSE ANINHADA
+            if (Populacao == Populacao2) {
+                printf("Resultado: **Empate!**\n");
+            } else {
+                if (Populacao > Populacao2) {
+                    printf("Resultado: **Carta 1** (%s) venceu!\n", Cidade);
+                } else { 
+                    printf("Resultado: **Carta 2** (%s) venceu!\n", Cidade2);
+                }
+            }
+            break;
+            
+        case 2: // Área (Maior vence)
+            nome_atributo = "Área";
+            printf("Atributo escolhido: **%s**\n", nome_atributo);
+            printf("Carta 1 (%s): %.2f km²\n", Cidade, Area);
+            printf("Carta 2 (%s): %.2f km²\n", Cidade2, Area2);
+            printf("Regra: MAIOR Área vence.\n");
 
-   // 4. Pontos Turísticos (Maior vence)
-   int venceNumero = (Numero > Numero2);
-   printf("Pontos Turísticos: Carta %i venceu (%i)\n", 2 - venceNumero, venceNumero);
+            if (Area == Area2) {
+                printf("Resultado: **Empate!**\n");
+            } else {
+                if (Area > Area2) {
+                    printf("Resultado: **Carta 1** (%s) venceu!\n", Cidade);
+                } else { 
+                    printf("Resultado: **Carta 2** (%s) venceu!\n", Cidade2);
+                }
+            }
+            break;
 
-   // 5. Densidade Populacional (Menor vence)
-   int venceDensidade = (Densidade < Densidade2);
-   printf("Densidade Populacional: Carta %i venceu (%i)\n", 2 - venceDensidade, venceDensidade);
+        case 3: // PIB (Maior vence)
+            nome_atributo = "PIB";
+            printf("Atributo escolhido: **%s**\n", nome_atributo);
+            printf("Carta 1 (%s): %.2lf Bilhões\n", Cidade, PIB);
+            printf("Carta 2 (%s): %.2lf Bilhões\n", Cidade2, PIB2);
+            printf("Regra: MAIOR PIB vence.\n");
 
-   // 6. PIB per Capita (Maior vence)
-   int vencePIBCapita = (PIBPERCAPITA > PIBPERCAPITA2);
-   printf("PIB per Capita: Carta %i venceu (%i)\n", 2 - vencePIBCapita, vencePIBCapita);
+            if (PIB == PIB2) {
+                printf("Resultado: **Empate!**\n");
+            } else {
+                if (PIB > PIB2) {
+                    printf("Resultado: **Carta 1** (%s) venceu!\n", Cidade);
+                } else { 
+                    printf("Resultado: **Carta 2** (%s) venceu!\n", Cidade2);
+                }
+            }
+            break;
 
-   // 7. Super Poder (Maior vence)
-   int venceSuperPoder = (SuperPoder > SuperPoder2);
-   printf("Super Poder: Carta %i venceu (%i)\n", 2 - venceSuperPoder, venceSuperPoder);
+        case 4: // Número de pontos turísticos (Maior vence)
+            nome_atributo = "Número de pontos turísticos";
+            printf("Atributo escolhido: **%s**\n", nome_atributo);
+            printf("Carta 1 (%s): %i\n", Cidade, Numero);
+            printf("Carta 2 (%s): %i\n", Cidade2, Numero2);
+            printf("Regra: MAIOR Número de pontos turísticos vence.\n");
 
-   // Comparando cartas no Super Trunfo
+            if (Numero == Numero2) {
+                printf("Resultado: **Empate!**\n");
+            } else {
+                if (Numero > Numero2) {
+                    printf("Resultado: **Carta 1** (%s) venceu!\n", Cidade);
+                } else { 
+                    printf("Resultado: **Carta 2** (%s) venceu!\n", Cidade2);
+                }
+            }
+            break;
 
-   printf("Comparação de cartas (Atributo: População):\n\n");
+        case 5: // Densidade Demográfica (Menor vence - REGRA INVERTIDA)
+            nome_atributo = "Densidade Demográfica";
+            printf("Atributo escolhido: **%s**\n", nome_atributo);
+            printf("Carta 1 (%s): %.2f Hab/km²\n", Cidade, Densidade);
+            printf("Carta 2 (%s): %.2f Hab/km²\n", Cidade2, Densidade2);
+            printf("Regra: **MENOR** Densidade Demográfica vence.\n");
+
+            if (Densidade == Densidade2) {
+                printf("Resultado: **Empate!**\n");
+            } else {
+                // Lógica Invertida: se Densidade < Densidade2, Carta 1 vence.
+                if (Densidade < Densidade2) {
+                    printf("Resultado: **Carta 1** (%s) venceu com o MENOR valor!\n", Cidade);
+                } else {
+                    printf("Resultado: **Carta 2** (%s) venceu com o MENOR valor!\n", Cidade2);
+                }
+            }
+            break;
+
+        default:
+            printf("Opção inválida! Por favor, escolha um número entre 1 e 5.\n");
+            break;
+    }
+    
+    printf("\n============================================\n");
   
-   // Carta X - Cidade (Estado): Valor
-   printf("Carta 1 - %s (%s): %lu\n", Cidade, Estado, Populacao);
-   printf("Carta 2 - %s (%s): %lu\n", Cidade2, Estado2, Populacao2);
-
-   // Estrutura IF-ELSE para determinar a vencedora
-   // Regra: Para População, a carta com o maior valor vence.
-   if (Populacao > Populacao2) {
-       // Carta 1 venceu
-       printf("Resultado: Carta 1 (%s) venceu!\n", Cidade);
-   } else if (Populacao2 > Populacao) {
-       // Carta 2 venceu
-       printf("Resultado: Carta 2 (%s) venceu!\n", Cidade2);
-   } else {
-       // Empate
-       printf("Resultado: Empate! As populações são iguais.\n");
-   }
-  
-  
-   return 0 ; // Indica que o programa finalizou sem erros
+    return 0 ; // Indica que o programa finalizou sem erros
 }
