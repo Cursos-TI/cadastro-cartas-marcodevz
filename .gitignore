@@ -1,0 +1,6 @@
+# Arquivos de objetos e executáveis do C/C++
+*.o
+*.exe
+*.out
+a.out
+super_trunfo
